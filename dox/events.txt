@@ -1,0 +1,6 @@
+List of events:
+	Idle
+	ServerMessage
+	ClientMessage
+	Attack
+	Start (enter world)

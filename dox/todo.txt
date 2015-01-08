@@ -1,0 +1,16 @@
+Organizer - put items to backpack in rows. Different item types to different
+packs.
+
+Simulate keypresses to windows other than client
+
+Events in scripts: OnLogin & so on
+
+Stop script on hotkey/from console.
+
+Translate "vendor buy/sell" commands. And all other text messages from server.
+
+Make screenshots
+
+Fix the NewGameCrypt class, so that it works with NewKey != 0x7f000001
+
+Automatic responce to Idle Warning message (53 07)

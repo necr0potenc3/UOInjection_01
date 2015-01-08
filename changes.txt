@@ -1,0 +1,33 @@
+1. Changed directory layout. You need to add the "Include" directory to your
+VC++ Directories settings. Place into there only files that would be used by 
+both injection and its plugins. Currently they are API.H and RegistryConstants.h
+
+2. Removed the common.dll as I use my own registry access functions. Moved
+RegistryConstants.h to the Include dir so the same constants can be used by 
+my code.
+
+3. Changed the CRegistry.getUOInstallDir so it uses the user-specified 
+directory and not the client install dir from registry. Your old code was 
+unable to select the correct directory if both 2D and 3D clients are installed.
+
+4. Removed patch file selection and client CRC calculation
+
+5. m_*InstallDir in AdvancedSettingsDlg is now a client install dir.
+Injection dir is now called m_*InjectionDir.
+
+6. Made a CRegistry constructor public. Plus made all other functions
+public. If you want convert them back to private and modify my code thar 
+uses CRegistry class as you wish (it is in ClientStarter.cpp and UOKeys.cpp 
+files).
+
+7. You should force users to always enter their username and password in server
+settings, because they are used to determine client encryption keys.
+
+8. I've added small code used to launch client with Injection, so UOInjection.exe
+is now can be used. But I had not added anything else (like UOAM launching,
+modifying UO.CFG file and so on).
+
+9. Modified uokeys.cfg so it now contains encryption mode information
+
+10. Modified UOInjection.exe project settings for the release build so that it 
+no longer uses dynamic MFC/CRT (MFC70.DLL is not required in the distribution).

@@ -1,0 +1,209 @@
+Here is a description of the launch sequence
+
+I think a seperate loaded dll should do this stuff.  If injection is used, it also 
+loads it aand the passes controll to it.
+
+Possible Cases:
+
+Launch, without AltDataDir, without Injection:
+
+	Create Temp dir
+	Create login.cfg in tempdir
+	if username is saved
+		create uo.cfg in tempdir using username and optionally the password
+	load uo client
+		hook CreateFileEx and redirect to tempdir
+	exit
+
+Launch, with AltDataDir, without Injection:
+
+	Create login.cfg in AltDataDir
+	if username is saved
+		create uo.cfg in AltDataDir using username and optionally the password
+	else 
+		remove uo.cfg from AltDataDir
+	if LaunchUOAM
+		load UOAM
+		hook CreateFileEx and redirect to AltDataDir
+		hook Registry functions
+	load uo client 
+		hook CreateFileEx and redirect to AltDataDir
+	exit
+	
+
+Launch, without AltDataDir, with Injection
+
+	Create Temp dir
+	Create login.cfg in tempdir
+	if username is saved
+		create uo.cfg in tempdir using username and optionally the password
+	load uo client 
+		hook CreateFileEx and redirect to tempdir
+		load injection and pass control to it
+	exit
+
+Launch, with AltDataDir, with Injection
+
+	Create login.cfg in AltDataDir
+	if username is saved
+		create uo.cfg in AltDataDir using username and optionally the password
+	else 
+		remove uo.cfg from AltDataDir
+	if LaunchUOAM
+		load UOAM
+		hook CreateFileEx and redirect to AltDataDir
+		hook Registry functions
+	load uo client 
+		hook CreateFileEx and redirect to AltDataDir
+		load injection and pass control to it
+	exit
+	
+
+Notes:
+
+hooking CreateFileEx in UO Client
+
+	Should first get an index of files in target directory
+	Should only redirect these file names
+	
+hooking UOAM
+
+	CreateFileEx Hooking
+	
+	Should get an index of files in target directory
+	If dir contains map0.mul then any file with *.map should also be redirected to 
+	this directory.  This way UOAM will create its map files in the AltDataDir on first use
+	
+	Regstry Hooking.
+	
+	We will store the registry for UOAM under the shard key.  If it doesnt exist, IE first time
+	redirected, copy the default UOAM registry to the redirected one under the shard key.
+	
+
+On Injection Load:
+
+	get client encryption
+	Hook the network stuff
+	load plugins
+
+Plugins:
+	List of functions:
+	
+		// return name of plugin
+		char * GetName()
+		// return file name of plugin dll
+		char * GetFileName()
+		// return version of plugin
+		char * GetVersion()
+		// return plugins GUID
+		char * GetGUID()
+		// return plugins Author
+		char * GetAuthor()
+		// return description of plugin
+		char * GetDescription()
+		// return array of GUIDs plugin depends on
+		char ** GetDependancies()
+		
+		// called whne user logs in
+		void OnLogin()
+		
+		// called when shard is picked
+		void OnShardConnect()
+		
+		// called when character is picked
+		void OnCharacterConnect()
+		
+		// called when user logs out
+		void OnLogout()
+		
+		// called when user logs out
+		// or when the back arrow is used to goback to the login screen
+		void OnShardDisconnect()
+		
+		// called when user logs out
+		// or when the back to the shard selection screen
+		void OnCharacterDisonnect()
+		
+		// called when the plugin is loaded
+		BOOL Init()
+		
+		// called so the plugin can patch the client if it wishes
+		// no longer necessary for encryption, but can be used if they need to patch for 
+		// other reasons.
+		void Patch(DWORD IN ClientCheckSum, DWORD ClientLength)
+		
+	Note on plugin load.
+	
+		Plugin should recursivly load its dependancies
+		
+Injection API for plugins
+
+	
+	// these functions give the plugin a root registry key 
+	// injection uses the runtime/current* reg values to determain where the key should 
+	// reside and creates if not present and pases the key to the plugin
+	// the plugin can then do as it wishes under the key
+	
+	// returns false if for instance GetCharacterConfig() is called and the user is not yet
+	// logged in.  HKEY will be 0 in this case.
+	
+	// global plugin stuff
+	BOOL INJECTION_API GetGlobalConfig(char * IN GUID, HKEY * OUT reg)
+	// server level config entries
+	BOOL INJECTION_API GetPluginServerConfig(char * IN GUID, HKEY * OUT reg)
+	// account level config entries
+	BOOL INJECTION_API GetPluginAccountConfig(char * IN GUID, HKEY * OUT reg)
+	// shard level entries
+	BOOL INJECTION_API GetPluginShardConfig(char * IN GUID, HKEY * OUT reg)
+	// character level entries
+	BOOL INJECTION_API GetCharacterConfig(char * IN GUID, HKEY * OUT reg)
+	
+	
+	void SendServer(char * MessageBuffer, UINT length)
+	void SendClient(char * MessageBuffer, UINT length)
+	
+	// Return HWND of injection tab control. It should be a parent HWND to all added windows
+	HWND INJECTION_API GetTabHwnd();
+
+	// Add a new tab to injection. If Resizeable == FALSE than that
+	// window would be centered inside injection window. Otherwize
+	//tab window would be resized to the maximal tab size. In this
+	//case window should realign all its controls itself.
+	BOOL INJECTION_API AddTab(HWND Tab, const char *Name, BOOL Resizeable);
+
+	//Remove tab with the given name
+	void INJECTION_API RemoveTab(const char *Name);
+
+
+	// Import table hooking functions
+	// Used internally to hook send/recv, and may be useful to plugin writers.
+
+	// Hooks the given function. Returns the previous address, so hooks
+	// may be cascaded. Ordinal parameter is used if FuncName is NULL
+	// or no function with given name is found in imports.
+	// In the case of error return value is NULL.
+	PVOID INJECTION_API HookImportedFunction(const char *Dll, const char *FuncName,
+						 int Ordinal, void *Function);
+
+	// need some functions in here for adding and removing message listeners.  
+	// they should cascade like the hooks do.
+	// plugins would register a function as a listener for a message number
+	// need suggestion here
+	// the idea is for the plugin to register interest in say the addtocontainer message
+	// comething like
+	PVOID * INJECTION_API AddListener(UINT IN MessageId, UINT IN Direction, void * IN ListenerFunction)
+	void INJECTION_API RemoveListener(PVOID * IN Listener)
+	
+	// format for the listener function
+	// returns if true if further processing should be applied
+	BOOL Listener(char * MessageBuffer)
+	
+	// also need 1 time listeners for commands like targeting that send a target requst and want the 
+	//responce and then dont want to listen any more.
+	// open to suggestions in this area.
+	
+	// Also should we not pass raw messages, but maybe a struct to the message decodded.
+	// will make the plugins life easier and less error prone by not sending bad formated 
+	// messages.
+	
+	

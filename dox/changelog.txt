@@ -1,0 +1,36 @@
+===================================================================
+v 0.0.0.0
+
+mamaich:
+- implemented all client/server encryption modes
+- Injection window is now resizeable and is processed in parallel thread
+- Plugins are supported
+- Implemented a world class. All items in the world are now stored in memory
+  for simplified access. Every 10 minutes or on ",debug 3" command the world
+  is cleaned from the items that are too far away from the player.
+- Information about player and reagents is displayed on window caption.
+- All containers in player's backpack with graphics == i_backpack or i_bag are 
+  automatically searched for reagents. 
+- Injection output to the client window now has 3 colors: green for normal 
+  messages, yellow for warnings and bold red for errors.
+- Added a "Skills" tab. Doubleclick on the specific cell in grid to change 
+  sorting mode or skill lock.
+- Added a "Multiple UO" plugin
+- Started to write a "high level" API
+- Made a small installer
+- Launcher now can be used to start client
+- POL server is now supported
+- Added UseObject/UseType commands
+
+Bugs/features:
+- UOTD client sometimes deadlocks on exit after too many login/logouts. 
+  Bug in client itself?
+- Too lazy to write a code for removing an added tab... :)
+- Sphere server/client bug: when login server and game server both have the same 
+  IP address 127.0.0.1 on a computer that is not connected to LAN, client does 
+  not close login socket and reuses it for the game encryption. But sphere server
+  does not change its encryption and is unable to process game packets.
+- Old clients (2.0.0 and alike) crash on Win98. New or 3D clients work fine.
+  All clients work fine on 2K/XP.
+- Launcher sometimes crashes after starting client. I'm unable to reproduce
+  this error on the debug build.

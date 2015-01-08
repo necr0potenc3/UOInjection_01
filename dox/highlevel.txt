@@ -1,0 +1,29 @@
+a set of high level actions:
+Walk
+UseSkill
+CastSpell
+Arm
+Disarm
+Attack
+Equip
+Unequip
+MoveToContainer
+uint32 Separate(uint32 Pile, int count)	- take the given number from a pile and return their serial
+buy/sell operation
+menu operations
+gumps
+
+Both high and low level commands:
++Say
++War
++Peace
+UseType
+UseObject
+WaitTargetType  	- waits should be queued
+WaitTargetObject
+SetReceivingContainer
+
+High level commands used to wait for action to complete:
+WaitWeightToChange([int oldWeight]);
+WaitUntilItemDisappears(Serial)
+WaitForItemToAppear(Type)

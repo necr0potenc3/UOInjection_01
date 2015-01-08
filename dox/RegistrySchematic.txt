@@ -1,0 +1,136 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// RegistrySchematic.txt
+//
+// Copyright (C) 2001 Wayne A. Hogue II 'Chiphead' (w_hogue@hotmail.com)
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+// 
+// This is the schematic of the configuration stored in the registry.
+// 
+////////////////////////////////////////////////////////////////////////////////
+
+
+[HKEY_LOCAL_MACHINE\Software\UOInjection]
+"Version" = STRING
+"InstallDir" = STRING
+
+[HKEY_CURRENT_USER\Software\UOInjection]
+"Version" = STRING
+"InstallDir" = STRING
+"CurrentServer" = STRING
+"CurrentAccount = STRING
+"CurrentShard" = STRING
+"CurrentCharacter = STRING
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers]
+"LastServer= STRING  Last server launched.
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}]
+"ProgramToLaunch" = STRING
+"RememberUsername" = BOOL
+"Username" = STRING
+"RememberPassword" = BOOL
+"Password" = STRING
+"UseInjection" = BOOL
+"Emulation" = STRING
+"FixTalk" = BOOL
+"FixWalk" = BOOL
+"UseAltDataDir" = BOOL
+"AltDataDir" = STRING
+"LaunchUOAM" = BOOL
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Addresses]
+Address01 = STRING
+Address02 = STRING
+...
+AddressXX = STRING
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}]
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}]
+"BuyString" = STRING
+"SellString" = STRING
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}]
+"FixLightLevel" = BOOL
+"LightLevel" = DWORD
+"FilterWeather" = BOOL
+"FilterPackSound" = BOOL
+"Filter
+"DisplayWeight" = BOOL
+"DisplayGold" = BOOL
+"DisplayMana" = BOOL
+"DisplayStamina" = BOOL
+"DisplayHitpoints" = BOOL
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\ArmSets]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\ArmSets\{ARMSET_ID}]
+"LeftHand" = DWORD
+"RightHand" = DWORD
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\BuyLists\]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\BuyLists\{BUYLIST_ID}]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\BuyLists\{BUYLIST_ID}\Items]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\BuyLists\{BUYLIST_ID}\Items\{ITEM_ID}]
+"Quantity" = DWORD
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\DressSets]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\DressSets\{DRESSSET_ID}]
+Layer01 = DWORD
+Layer02 = DWORD
+Layer03 = DWORD
+...
+LayerXX = DWORD
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\HotKeys]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\HotKeys\{HOTKEY_CODE}]
+"Command" = STRING
+"PassToUO" = BOOL
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\Gumps]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\Gumps{GUMP_ID}]
+"Serial" = DWORD
+"ID" = DWORD
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\Gumps{GUMP_ID}\Buttons]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\Gumps{GUMP_ID}\Buttons\{BUTTON_ID}]
+"Serial" = DWORD
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\Objects]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\Objects\{OBJECT_ID}]
+"Serial" = DWORD
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\ObjectTypes]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\ObjectTypes\{OBJECTTYPE_ID}]
+"Graphic" = DWORD
+"Color" = DWORD
+"Display" = BOOL
+"Order" = DWORD
+
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\SellLists\]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\SellLists\{SELLLIST_ID}]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\SellLists\{SELLLIST_ID}\Items]
+[HKEY_CURRENT_USER\Software\UOInjection\Servers\{SERVER_NAME}\Accounts\{ACCOUNT_NAME}\Shards\{SHARD_NAME}\Characters\{CHAR_ID}\SellLists\{SELLLIST_ID}\Items\{ITEM_ID}]
+"Quantity" = DWORD
+

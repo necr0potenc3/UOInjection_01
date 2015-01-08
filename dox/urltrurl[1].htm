@@ -1,0 +1,2478 @@
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <html>
+
+<!-- BabelFish added base tag --><base href="http://www2.starcat.ne.jp/~sou/protocol.html">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+ var babelOrigUrl="http://www2.starcat.ne.jp/~sou/protocol.html";  if  ((null == parent) || (null == parent.BabelFishAdd) || ('TF' != parent.BabelFishAdd.babelTF)) { var i = new Image(); i.src = 'http://babel.altavista.com/aftu' }
+//--></SCRIPT><head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-sjis">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Protocol
+</title>
+<base target="BabelFishBody" >
+</head>
+
+<body background="mimages/mbg.gif" bgcolor="#FFFFFF"
+vlink="#0000FF" alink="#00FFFF">
+
+<table border="1" cellspacing="0" width="100%"bgcolor="#000000" bordercolor="#000000">
+    <tr>
+        <td align="center"><font color="#FFFFFF" size="3"
+        face="Times New Roman"><b> Protocol      </b></font></td>
+    </tr>
+</table>
+
+<p align="center">      </p>
+
+<table border="0" cellspacing="0" width="99%" height="20">
+    <tr>
+        
+    <td width="12" bgcolor="#000000">      </td>
+    <td width="100%" bgcolor="#000000"><font color="#FFFFFF" size="3"
+        face="Times New Roman"><b> Patch 
+Server Protocol      </b></font></td>
+    </tr>
+</table>
+
+<blockquote> 
+  <p> To do connection and issue request in 
+the patch server, you must follow procedure.      <br>
+     First [ 
+please connect to the compassion.owo.com:8888 ].      <br>
+     And 
+please send the HelloRequest.      <br>
+     The server reacts the 
+PatchServerTransfer depending.      <br>
+     Compassion (sympathy?  
+Pity?  From please cut off connection.      <br>
+     And please 
+connect to the IP and the Port which are returned to you.  That time 
+you send the HelloRequest to the new server.      <br>
+     That 
+returns the NoticeBlock.  There is a thing where that time you connect
+to the patch server, when communication is received, as for you it is 
+possible to start searching the patch.      <br>
+     First please send
+the PatchListRequest.      <br>
+     Can Version information find from 
+the midst of the verinfo.mul, probably will be.      <br>
+     There 
+are two Version there.  The PatchListRequest for first ones which 
+grasp the 3uqf PatchListData should be sent.      <br>
+     And please 
+send request because of the 2nd Version, grasp that data.      
+<br>
+     You are the expectation which acquires the list of the 
+available patch in the past.      <br>
+     You sending the 
+PatchDataRequest, can require the actual patch.      <br>
+     You 
+receive the PatchData, probably will be.      <br>
+     When you finish
+downloading the available patch, it is possible to apply that patch.  
+<br>
+     Until and, the above that there is no patch of the new 
+Version, please send the PatchListRequest.      </p>
+  <p><b> HelloRequest
+      </b><br>
+     0x15 0x00 0x00 0x00      <br>
+    <b> PatchServerTransfer  
+</b><br>
+     0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00      <br>
+    <b> IP 
+Address Port NoticeBlock      </b><br>
+     0x01 0x00 0x00 0x00 0x01 0x00 
+0x00 0x00 0x02 0x00 0x00 0x00 TextLength      <br>
+     Notice data... 
+(TextLength bytes)      <br>
+    <b> PatchListRequest      </b><br>
+     0x01 
+0x00 0x00 0x00 VersionTextLength      <br>
+     VersionText... (the 
+i.e. Win32_UO_Gold) Version      <br>
+    <b> PatchListData      </b><br>
+     
+Filename Length (0=done) Filename... File size      <br>
+     Repeat 
+until done...      <br>
+    <b> PatchDataRequest      </b><br>
+     0x02 0x00 
+0x00 0x00 Filename Length Filename... (length bytes)      <br>
+     
+0x00 0x00 0x00 0x00      <br>
+    <b> PatchData      </b><br>
+     Filename 
+Length Filename... File size Block Length (0=done)      <br>
+     Block
+data... (Block Length bytes)      <br>
+     Read Block Length/Block 
+Data until done      </p>
+</blockquote>
+
+<table border="0" cellspacing="0" width="99%" height="20">
+    <tr>
+        <td width="12" bgcolor="#000000">      </td>
+        
+    <td width="100%" bgcolor="#000000"><font color="#FFFFFF" size="3"
+        face="Times New Roman"><b> UOX Protocol      </b></font></td>
+        
+    </tr>
+</table>
+
+
+
+<p>
+</p>
+<center>
+  <table cellspacing=0 cellpadding=0 border=0 width="393">
+    <tr>
+     <td >
+      <table cellspacing=1 cellpadding=2 border=0 width=400>
+       <tr>
+
+            <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Create Character (00)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 00h  
+    </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Byte [ 60 ]      </td>
+        <td > 
+Name      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Gender      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Strength      </td>
+       </tr><tr>
+            <td height="14" > Byte      </td>
+            <td height="14" > Dexterity      
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Intelligence      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Skill 1      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Value 1      
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Skill 2      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+Value 2      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Skill 3      </td>
+       </tr><tr>
+        <td > Byte  
+    </td>
+        <td > Value 3      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Skin      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Hair Style      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Hair Color      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Beard Style      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Beard Color      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Starting City      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0    
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Shirt Color      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Pants Color      </td>
+       </tr><tr>
+
+            <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Walk (02)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 02h      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Direction      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > Sequence      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Unknown  
+</td>
+       </tr><tr>
+
+            <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Talk Client (03)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 03h      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td >
+Mode (0=say,2=emote,8=whisper,9=yell)      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td >
+Hue      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Font      </td>
+       </tr><tr>
+        <td > Byte [ ]      
+</td>
+        <td > Text      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Attack (05)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 05h      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> 
+Double Click (06)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 06h      </td>
+       </tr><tr>
+        <td > 
+Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Get Item (07)      </font></th>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > 07h      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Amount      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Drop Item (08)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 08h      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item
+Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Y      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Z      </td>
+       </tr><tr>
+        <td > Dword    
+  </td>
+        <td > Container Serial      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Single Click (09)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 09h      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+Serial      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Status (11)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 11h
+      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 42h      </td>
+       </tr><tr>
+        <td > Dword      
+</td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      </td>
+        <td > Name      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > HP      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > HP MAX
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > FFh      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 00h  
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Gender      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+Strength      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Dexterity      </td>
+       </tr><tr>
+        <td > Word
+</td>
+        <td > Intelligence      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Stamina      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Stamina MAX      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Mana      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Mana MAX      </td>
+       </tr><tr>
+        <td > 
+Dword      </td>
+        <td > Gold      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > AR      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Weight      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> External Command (12)
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 12h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data 
+Size      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Command      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Equip 
+Item (13)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 13h      </td>
+       </tr><tr>
+        <td > Dword    
+</td>
+        <td > Item Serial      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Layer      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Container Serial      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Put Item 
+(1a)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 1ah      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item ID      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+Item Amount      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X      </td>
+       </tr><tr>
+        <td > Word    
+  </td>
+        <td > Y      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Z      </td>
+       </tr><tr>
+        <td > Word    
+</td>
+        <td > Hue      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Status      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> 
+START (1b)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 1bh      </td>
+       </tr><tr>
+        <td > Dword  
+    </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > 
+Word      </td>
+        <td > ID      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X      </td>
+       </tr><tr>
+        <td >
+Word      </td>
+        <td > Y      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > Z      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Direction      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 7fh      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0  
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 7      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Status
+      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 960h      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Talk 
+Server (1C)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 1Ch      </td>
+       </tr><tr>
+        <td > Word  
+    </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Character 
+Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Character ID      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > Type      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Hue      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Font      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      
+</td>
+        <td > Name      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Text...      
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Remove Item (1d)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 1dh      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Teleport (20)  
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 20h      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > ID      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Skin      </td>
+       </tr><tr>
+        <td > Byte  
+    </td>
+        <td > Status      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X      </td>
+       </tr><tr>
+        <td > 
+Word      </td>
+        <td > Y      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > Direction      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Z      
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Walk Deny (21)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 21h      
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Sequence      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+X      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Y      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+Direction      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Z      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Walk OK 
+(22)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 22h      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Sequence      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Status      
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Open Container (24)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 24h    
+  </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td >
+Gump      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Word    
+</td>
+        <td > Number of Items      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Item ID      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Word
+</td>
+        <td > Item Amount      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item X      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Y      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+Container Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Hue      </td>
+       </tr><tr>
+        <td >  
+    </td>
+        <td > Endloop      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Add Item (25)      </font></th>
+       </tr><tr>
+        <td > Byte  
+    </td>
+        <td > 25h      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item ID      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 0
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Amount      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Item X      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Y      </td>
+       </tr><tr>
+        <td > 
+Dword      </td>
+        <td > Container Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+Item Hue      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Bounce (27)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+27h      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Where      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Death Menu 
+(2c)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 2ch      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Choice      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Wear Item (2E)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 2Eh      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item ID      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 0
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Layer      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+Container Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Hue      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> 
+Control (33)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 33h      </td>
+       </tr><tr>
+        <td > Byte  
+</td>
+        <td > Command (1=pausex and 2=restart)      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Status Request
+(34)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 34h      </td>
+       </tr><tr>
+        <td > Dword      
+</td>
+        <td > Unknown      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Type      </td>
+       </tr><tr>
+        <td > 
+Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Skill Update (3A)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 3Ah      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data 
+Size      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > List Type (ff=single and No 
+loop)      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Index      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Skill      </td>
+       </tr><tr>
+        <td > 
+Word      </td>
+        <td > Base      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > LOCK Status  
+</td>
+       </tr><tr>
+        <td >      </td>
+        <td > Endloop      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 0    
+  </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Vendor Buy (3b)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 3bh      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Dword      
+</td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Number of Items 
+(0=clear message)      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop      </td>
+       </tr><tr>
+        <td > Byte
+      </td>
+        <td > Layer      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial    
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Amount      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > 
+Endloop      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Container Content (3c)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 3ch      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > 
+Word      </td>
+        <td > Number of Items      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop  
+    </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Item ID      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Word
+</td>
+        <td > Item Amount      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item X      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Y      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+Container Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Hue      
+</td>
+       </tr><tr>
+        <td >      </td>
+        <td > Endloop      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Set Light (4f)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 4fh      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Level
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Client Message (53)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 53h    
+  </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Message (1=no char,2=char exists,3 &amp; 
+4=can't connect,5=char IN world,6=login problem, 7=idle and 8=can't 
+connect)      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Sound Effect (54)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 54h      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 1      </td>
+       </tr><tr>
+        <td > Word    
+</td>
+        <td > Effect      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Word
+      </td>
+        <td > X      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Y      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Tech
+Stuff 2 (55)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 55h      </td>
+       </tr><tr>
+        <td > Byte  
+</td>
+        <td > 5bh      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 0ch      </td>
+       </tr><tr>
+        <td > Byte  
+</td>
+        <td > 13h      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 03h      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Plot 
+Course (56)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 56h      </td>
+       </tr><tr>
+        <td > Dword  
+</td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Action 
+(1=add,5=delete,6=toggle edit)      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Pin 
+Number      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Pin X      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Pin Y      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Select Character (5d)      </font></th>
+       </tr><tr>
+        <td > Byte
+      </td>
+        <td > 5dh      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > EDEDEDh      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 5661h      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 69h
+</td>
+       </tr><tr>
+        <td > Byte [ 60 ]      </td>
+        <td > Character Name      </td>
+       </tr><tr>
+        <td > Byte  
+</td>
+        <td > Character Index      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0      
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Set Weather (65)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 65h      
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Weather 
+(FFh=Dry,0=rain,1=storm,2=snow,3=thunder      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Unknown      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 10h      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> 
+Book Pages (66)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 66h      </td>
+       </tr><tr>
+        <td > 
+Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item 
+Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Number of Pages      </td>
+       </tr><tr>
+        <td >
+      </td>
+        <td > Loop      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Page Index      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Number of Lines      </td>
+       </tr><tr>
+        <td >      
+</td>
+        <td > Loop2      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Text (0==EOL)    
+  </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Endloop2      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Endloop
+      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Text Change (69)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 69h  
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Byte [ ]      
+</td>
+        <td > Unknown      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Target Char (6c)      </font></th>
+       </tr><tr>
+        <td > Byte    
+</td>
+        <td > 6ch      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Target Type      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Character Serial      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Check Crime      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial    
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X (ffff=cancel)      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Y (ffff=cancel)      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Unknown    
+  </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Z      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Play MIDI (6d)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 6dh      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > MIDI
+      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Do Action (6e)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 6eh    
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+Action      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 5      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Direction      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > 0      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Trade (6f)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 6fh      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > Type (0=start,1=cancel,2=change checks      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Character Serial      </td>
+       </tr><tr>
+        <td > Dword    
+  </td>
+        <td > Item1 Serial (only exists for type0)      </td>
+       </tr><tr>
+        <td > Dword  
+    </td>
+        <td > Item2 Serial (only exists for type0)      </td>
+       </tr><tr>
+        <td > Byte  
+</td>
+        <td > 1 (only exists for type0)      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      
+</td>
+        <td > Name (only exists for type0)      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Special Effect 
+(70)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 70h      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Type (0=moving)      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Character 
+Serial      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Trigger Serial      </td>
+       </tr><tr>
+        <td > 
+Word      </td>
+        <td > Object ID      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Y      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Z      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Trigger X      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td >
+Trigger Y      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Trigger Z      </td>
+       </tr><tr>
+        <td > 
+Word      </td>
+        <td > 906h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 0      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Explode      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Message Board (71)  
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 71h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data 
+Size      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Type (0=draw,1=get posts,2 &amp; 
+3=get body,4=ack dl,5=post,6=delete)      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td >
+Serial (only exists for type0)      </td>
+       </tr><tr>
+        <td > Byte [ 20 ]      </td>
+        <td >
+Name (only exists for type0)      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Mode Set (72)      </font></th>
+       </tr><tr>
+        <td >
+Byte      </td>
+        <td > 72h      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > War Mode      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Unknown      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+Unknown      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Ping (73)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 73h  
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Value      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Buy Details (74)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 74h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data 
+Size      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Container Serial      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > Number of Items      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop  
+    </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Price      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Name Length      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Name      
+</td>
+       </tr><tr>
+        <td >      </td>
+        <td > Endloop      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Rename Character (75)    
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 75h      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+Serial      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      </td>
+        <td > Name      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> 
+External Move (77)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 77h      </td>
+       </tr><tr>
+        <td > 
+Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > ID      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Y      
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Z      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+Direction      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Skin      </td>
+       </tr><tr>
+        <td > Byte    
+</td>
+        <td > Status      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Text Color      
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Create Item (78)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 78h      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Dword      
+</td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > ID      </td>
+       </tr><tr>
+        <td > Word
+</td>
+        <td > X      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Y      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Z      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Direction      </td>
+       </tr><tr>
+        <td > 
+Word      </td>
+        <td > Skin      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Status      
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Text Color      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > 
+Loop      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial      </td>
+       </tr><tr>
+        <td > Word
+      </td>
+        <td > Item ID      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Item Layer    
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Hue      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > 
+Endloop      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Gump Message
+(7c)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 7ch      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Gump      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+Title Length      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Title      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > Number of Lines      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop  
+    </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Image ID      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Checked      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Line Length      
+</td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Text      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > 
+Endloop      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Choice (7d)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 7dh
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Unknown      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+Main Gump      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item      </td>
+       </tr><tr>
+        <td > Dword  
+    </td>
+        <td > Unknown      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Login to Login Server (80)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 80h      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      
+</td>
+        <td > Name      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      </td>
+        <td > Password      
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Unknown      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Login Error (82)    
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 82h      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Error
+(0=no account,1=account IN use,2=account blocked, 3=no password)      
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Delete Character (83)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 83h  
+    </td>
+       </tr><tr>
+        <td > Byte [ 33 ]      </td>
+        <td > Unknown      </td>
+       </tr><tr>
+        <td > Byte    
+  </td>
+        <td > Character Index      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Client IP
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Paper Doll (88)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 88h      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Character Serial      </td>
+       </tr><tr>
+        <td > Byte [ 60 
+]      </td>
+        <td > Name      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Backpack (89)      </font></th>
+       </tr><tr>
+        <td > Byte  
+    </td>
+        <td > 89h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Container Serial      </td>
+       </tr><tr>
+        <td >      
+</td>
+        <td > Loop      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Layer      </td>
+       </tr><tr>
+        <td > 
+Dword      </td>
+        <td > Item Serial      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Endloop  
+    </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 0      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Relay Server (8c)    
+  </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 8ch      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+Server IP      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Server Port      </td>
+       </tr><tr>
+        <td > 
+Dword      </td>
+        <td > Auth IP      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Map1 (90)      </font></th>
+       </tr><tr>
+        <td > Byte
+</td>
+        <td > 90h      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > 
+Word      </td>
+        <td > Corner Image      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X1  
+    </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Y1      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X2
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Y2      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Width
+      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Height      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Login to Game 
+Server (91)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 91h      </td>
+       </tr><tr>
+        <td > Dword  
+</td>
+        <td > Crypt key      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      </td>
+        <td > Name      
+</td>
+       </tr><tr>
+        <td > Byte [ 30 ]      </td>
+        <td > Password      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Open Book 
+(93)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 93h      </td>
+       </tr><tr>
+        <td > Dword      
+</td>
+        <td > Item Serial      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Editable      
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 1      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Number 
+of Pages      </td>
+       </tr><tr>
+        <td > Byte [ 60 ]      </td>
+        <td > Title      </td>
+       </tr><tr>
+        <td > 
+Byte [ 30 ]      </td>
+        <td > Author      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Dye Vat (95)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 95h      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item
+Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Hue      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Multi Target (99)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 99h      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Allow Ground      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+0      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Dword      
+</td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Multi ID      </td>
+       </tr><tr>
+        <td > 
+Dword      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 0      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF">
+GM Page (9b)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 9bh      </td>
+       </tr><tr>
+        <td > Byte [
+257 ]      </td>
+        <td > Unknown      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Sell Details (9e)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 9eh      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data 
+Size      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Number of Items      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Item ID      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Hue      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Amount      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Value      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Name Length      
+</td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Name      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > 
+Endloop      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Sell to Vendor (9f)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > 9fh      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > 
+Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Unknown  
+    </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Number of Items      </td>
+       </tr><tr>
+        <td >      
+</td>
+        <td > Loop      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item Serial      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Item Amount      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > 
+Endloop      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Select Server (A0)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > A0h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Server Index      
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Update Strength (A1)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > A1h    
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+Strength      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > HitPoints      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> 
+Update Intelligence (A2)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > A2h      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+Intelligence      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Mana      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> 
+Update Dexterity (A3)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > A3h      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+Dexterity      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Stamina      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Spy 
+(A4)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > A4h      </td>
+       </tr><tr>
+        <td > Byte [ 148 ]  
+</td>
+        <td > Unknown      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Launch Browser (A5)      </font></th>
+       </tr><tr>
+        <td > Byte
+      </td>
+        <td > A5h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      
+</td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > URL      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Show Scroll (A6)    
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > A6h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data 
+Size      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Font      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Line      </td>
+       </tr><tr>
+        <td > Word  
+    </td>
+        <td > Text Length      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Text    
+</td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Get Tip (A7)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > A7h      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Tip      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+Unknown      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Server List (A8)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > A8h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > FFh      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Number of 
+Servers      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Server Index      </td>
+       </tr><tr>
+        <td > Byte [ 32 ]      </td>
+        <td > Server 
+Name      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Percent FULL      </td>
+       </tr><tr>
+        <td > Byte
+      </td>
+        <td > Timezone      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Server IP  
+    </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Endloop      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Character List (A9)  
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > A9h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data 
+Size      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Number of Characters      
+</td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop      </td>
+       </tr><tr>
+        <td > Byte [ 60 ]      </td>
+        <td > 
+Character Name      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Endloop      </td>
+       </tr><tr>
+        <td > Byte
+      </td>
+        <td > Number of Cities      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Loop2    
+  </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Index      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      
+</td>
+        <td > City Name      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      </td>
+        <td > Area of 
+Town      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > Endloop2      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Attack OK (AA)
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > AAh      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+Serial      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Text Entry (AB)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+ABh      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Dword    
+</td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Type      </td>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > Index      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Text Length
+      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Text      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > 101h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 0      </td>
+       </tr><tr>
+        <td > Word  
+    </td>
+        <td > MAX Length      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Label Length
+      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Label      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Text Entry 
+Input (AC)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > ACh      </td>
+       </tr><tr>
+        <td > Word    
+</td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      
+</td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Type      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+Index      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Mode (0=cancel and 1=ok)      
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Text Length      </td>
+       </tr><tr>
+        <td > Byte [ ]      
+</td>
+        <td > Text      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Unicode Talk Client (AD)      </font></th>
+       </tr><tr>
+        <td > 
+Byte      </td>
+        <td > ADh      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size    
+  </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Mode (0=say,2=emote,8=whisper,9=yell)  
+    </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Hue      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > 
+Font      </td>
+       </tr><tr>
+        <td > Byte [ 4 ]      </td>
+        <td > Language      </td>
+       </tr><tr>
+        <td > 
+Byte [ ]      </td>
+        <td > Text      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Unicode Talk Server (AE)    
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > AEh      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data 
+Size      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > ID      </td>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > Type      </td>
+       </tr><tr>
+        <td > Word  
+</td>
+        <td > Hue      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Font      </td>
+       </tr><tr>
+        <td > Byte 
+[ 4 ]      </td>
+        <td > Language      </td>
+       </tr><tr>
+        <td > Byte [ 30 ]      </td>
+        <td > 
+Name      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Text      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Death 
+(AF)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > AFh      </td>
+       </tr><tr>
+        <td > Dword      
+</td>
+        <td > Character Serial      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Item 
+Serial      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 0      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Show Gump 
+(B0)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > B0h      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Data Length      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Serial      
+</td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > Gump      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 
+6eh      </td>
+       </tr><tr>
+        <td > Dword      </td>
+        <td > 46h      </td>
+       </tr><tr>
+        <td > Word      
+</td>
+        <td > Layout Length      </td>
+       </tr><tr>
+        <td > Byte [ ]      </td>
+        <td > Layout    
+</td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Number of Lines      </td>
+       </tr><tr>
+        <td >      
+</td>
+        <td > Loop      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Line Length      
+</td>
+       </tr><tr>
+        <td > Word [ ]      </td>
+        <td > Text      </td>
+       </tr><tr>
+        <td >      </td>
+        <td > 
+Endloop      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Gump Choice (B1)      </font></th>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > B1h      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > Data Size      </td>
+       </tr><tr>
+        <td > 
+Byte [ ]      </td>
+        <td > Button Data      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Popup Help (B6)      
+</font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > B6h      </td>
+       </tr><tr>
+        <td > Byte [ 8 ]      </td>
+        <td >
+Unknown      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Profile (B8)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > 
+B8h      </td>
+       </tr><tr>
+        <td > Byte [ 7 ]      </td>
+        <td > Unknown      </td>
+       </tr><tr>
+
+        <th bgcolor="#000000" colspan=2><font color="#FFFFFF"> Arrow
+(BA)      </font></th>
+       </tr><tr>
+        <td > Byte      </td>
+        <td > BAh      </td>
+       </tr><tr>
+        <td > Byte      
+</td>
+        <td > Unknown      </td>
+       </tr><tr>
+        <td > Word      </td>
+        <td > X      </td>
+       </tr><tr>
+        <td > Word
+</td>
+        <td > Y  
+</td>
+
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+</center>
+
+
+
+
+
+<hr size="1" noshade>
+</body>
+</html>
+

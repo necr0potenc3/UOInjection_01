@@ -1,0 +1,461 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+// Generated Help ID header file
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "resource.hm"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\UOInjection.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\UOInjectionApp.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About UOInjection"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "UOInjection Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002",IDC_STATIC,40,20,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+    LTEXT           "Licensed under the GNU Public License",IDC_STATIC,40,31,
+                    128,8
+END
+
+IDD_UOINJECTION_DIALOG DIALOGEX 0, 0, 213, 221
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Injection"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Launch",IDOK,155,7,51,14,WS_DISABLED
+    PUSHBUTTON      "Exit",IDCANCEL,155,199,51,14
+    LISTBOX         IDC_SERVERS_LIST,7,7,146,92,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Edit",IDC_EDIT_BUTTON,155,38,51,14,WS_DISABLED,0,
+                    HIDC_EDIT_BUTTON
+    PUSHBUTTON      "&New",IDC_NEW_BUTTON,155,22,51,14
+    PUSHBUTTON      "&Delete",IDC_DELETE_BUTTON,155,54,51,14,WS_DISABLED
+    LTEXT           "Address:",IDC_STATIC,32,113,28,8
+    LTEXT           "Alt Data Dir:",IDC_STATIC,21,123,39,8
+    LTEXT           "Launch UOAM:",IDC_STATIC,10,133,50,8
+    LTEXT           "Use Injection:",IDC_STATIC,16,143,44,8
+    LTEXT           "Client Emulation:",IDC_STATIC,7,153,53,8
+    LTEXT           "",IDC_ADDRESS_STATIC,64,113,142,8
+    LTEXT           "",IDC_ALT_DATA_DIR_STATIC,64,123,142,8
+    LTEXT           "",IDC_LAUNCH_UOAM_STATIC,64,133,142,8
+    LTEXT           "",IDC_USE_INJECTION_STATIC,64,143,142,8
+    LTEXT           "",IDC_CLIENT_EMULATION_STATIC,64,153,142,8
+    CONTROL         "Check for updates on launch",
+                    IDC_CHECK_FOR_UPDATES_CHECK,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,186,107,10
+    PUSHBUTTON      "Check for &Update Now",IDC_CHECK_FOR_UPDATE_BUTTON,7,
+                    199,81,14
+    LTEXT           "__________________________________________________",
+                    IDC_STATIC,7,161,201,8
+    LTEXT           "Version:",IDC_STATIC,7,173,26,8
+    LTEXT           "",IDC_VERSION_STATIC,37,173,169,8
+    PUSHBUTTON      "&Advanced",IDC_ADVANCE_BUTTON,155,70,51,14
+    LTEXT           "Client:",IDC_STATIC,40,103,20,8
+    LTEXT           "",IDC_CLIENT_STATIC,64,103,142,8
+    PUSHBUTTON      "&Plugins",IDC_PLUGINS,155,86,51,14,NOT WS_TABSTOP
+END
+
+IDD_EDITSERVERDLG_DIALOG DIALOGEX 0, 0, 251, 217
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "New Server"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_NAME_EDIT,33,7,159,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_CLIENT_EDIT,33,22,159,14,ES_AUTOHSCROLL
+    CONTROL         "Remeber Username?",IDC_REMEMBER_USERNAME_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,21,93,83,10
+    EDITTEXT        IDC_USERNAME_EDIT,107,91,129,14,ES_AUTOHSCROLL
+    CONTROL         "Remember Password?",IDC_REMEMBER_PASSWORD_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,21,110,87,10
+    EDITTEXT        IDC_PASSWORD_EDIT,107,108,129,14,ES_AUTOHSCROLL
+    CONTROL         "Use Alternate Data Directory",IDC_USE_ALT_DIR_CHECK,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,133,106,10
+    CONTROL         "Launch UOAM",IDC_LAUNCH_UOAM_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,123,133,63,10
+    EDITTEXT        IDC_ALT_DATA_DIR_EDIT,43,143,152,14,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+    CONTROL         "Use Injection",IDC_USE_INJECTION_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,166,57,10
+    COMBOBOX        IDC_CLIENT_EMULATION_COMBO,149,164,89,85,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Fix Walk (POL Servers)",IDC_FIX_WALK_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,13,181,89,10
+    CONTROL         "Fix Talk (POL Servers)",IDC_FIX_TALK_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,107,181,87,10
+    DEFPUSHBUTTON   "OK",IDOK,7,196,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,194,196,50,14
+    LTEXT           "Name:",IDC_STATIC,7,10,22,8
+    LTEXT           "Client:",IDC_STATIC,7,25,20,8
+    PUSHBUTTON      "...",IDC_GET_CLIENT_BUTTON,195,22,15,14,NOT WS_TABSTOP
+    LTEXT           "Addresses:",IDC_STATIC,7,41,36,8
+    LISTBOX         IDC_ADDRESSES_LIST,45,40,145,42,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL
+    PUSHBUTTON      "&New",IDC_NEW_ADDRESS_BUTTON,194,40,50,14,NOT 
+                    WS_TABSTOP
+    PUSHBUTTON      "&Edit",IDC_EDIT_ADDRESS_BUTTON,194,55,50,14,WS_DISABLED | 
+                    NOT WS_TABSTOP
+    PUSHBUTTON      "Delete",IDC_DELETE_ADDRESS_BUTTON,194,69,50,14,
+                    WS_DISABLED | NOT WS_TABSTOP
+    LTEXT           "Alt Data:",IDC_ALT_DATA_DIR_STATIC,13,146,28,8,
+                    WS_DISABLED
+    PUSHBUTTON      "...",IDC_ALT_DATA_DIR_BUTTON,197,143,15,14,WS_DISABLED | 
+                    NOT WS_TABSTOP
+    GROUPBOX        "",IDC_STATIC,7,125,237,36
+    GROUPBOX        "",IDC_STATIC,7,85,237,41
+    GROUPBOX        "",IDC_STATIC,7,159,237,36
+    LTEXT           "Client Emulation:",IDC_CLIENT_EMULATION_STATIC,92,166,
+                    53,8,WS_DISABLED
+END
+
+IDD_ADVANCE_SETTINGS_DIALOG DIALOGEX 0, 0, 219, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Advanced Settings"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,57,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,162,57,50,14
+    LTEXT           "Client Dir:",IDC_STATIC,7,26,31,8
+    LTEXT           "Injection Dir:",IDC_STATIC,7,10,40,8
+    LTEXT           "Key File:",IDC_STATIC,7,42,28,8
+    EDITTEXT        IDC_INSTALL_DIR_EDIT,49,23,143,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_INJECTIONDIR_EDIT,49,7,143,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_KEYFILE_EDIT,49,39,143,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_INSTALL_DIR_BUTTON,196,23,16,14
+    PUSHBUTTON      "...",IDC_PATCHFILE_BUTTON,196,7,16,14
+    PUSHBUTTON      "...",IDC_KEYFILE_BUTTON,196,39,16,14
+END
+
+IDD_EDIT_ADDRESS_DIALOG DIALOGEX 0, 0, 241, 122
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Server Address"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,101,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,184,101,50,14
+    LTEXT           "Address:",IDC_STATIC,7,7,28,8
+    LTEXT           "Port:",IDC_STATIC,19,26,16,8
+    EDITTEXT        IDC_ADDRESS_EDIT,39,7,102,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PORT_EDIT,39,23,40,14,ES_AUTOHSCROLL
+    LTEXT           "Example: 123.123.123.123",IDC_STATIC,148,10,86,8
+    LTEXT           "Example: 2593",IDC_STATIC,83,26,48,8
+    LTEXT           "Current Config for Reference:",IDC_STATIC,7,40,93,8
+    EDITTEXT        IDC_LOGIN_FILE_EDIT,7,49,227,48,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "or",IDC_STATIC,200,18,8,8
+    LTEXT           "shard.myshard.com",IDC_STATIC,172,26,62,10
+END
+
+IDD_LAUNCH_PROGRESS_DIALOG DIALOGEX 0, 0, 168, 77
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION
+CAPTION "Launching..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Close",IDCANCEL,22,59,50,14,WS_DISABLED
+    LTEXT           "Starting client in suspended state...",
+                    IDC_STATIC_PHASE1,6,6,116,8,WS_DISABLED
+    LTEXT           "Done",IDC_STATIC_STATE1,144,6,18,8,NOT WS_VISIBLE
+    LTEXT           "Preparing client to load Injection.dll...",
+                    IDC_STATIC_PHASE2,6,24,122,8,WS_DISABLED
+    LTEXT           "Done",IDC_STATIC_STATE2,144,24,18,8,NOT WS_VISIBLE
+    LTEXT           "Resuming client execution...",IDC_STATIC_PHASE3,6,42,92,
+                    8,WS_DISABLED
+    LTEXT           "Done",IDC_STATIC_STATE3,144,42,18,8,NOT WS_VISIBLE
+    GROUPBOX        "",IDC_STATIC,0,-2,168,57
+    PUSHBUTTON      "Details",IDC_BUTTON1,95,59,50,14,WS_DISABLED
+END
+
+IDD_PLUGINS_DIALOG DIALOG  0, 0, 269, 175
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Plugins"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,154,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,212,154,50,14
+    LISTBOX         IDC_PLUGINS_LIST,7,7,202,139,LBS_NOINTEGRALHEIGHT | 
+                    LBS_MULTICOLUMN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Add",IDC_ADD_BUTTON,212,7,50,14
+    PUSHBUTTON      "&Remove",IDC_REMOVE_BUTTON,212,24,50,14,WS_DISABLED | 
+                    NOT WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "UOInjection MFC Application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "UOInjection"
+            VALUE "LegalCopyright", "Copyright (C) 2002"
+            VALUE "OriginalFilename", "UOInjection.EXE"
+            VALUE "ProductName", "UOInjection Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_UOINJECTION_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 206
+        VERTGUIDE, 60
+        VERTGUIDE, 64
+        VERTGUIDE, 153
+        VERTGUIDE, 155
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 213
+        HORZGUIDE, 100
+        HORZGUIDE, 169
+    END
+
+    IDD_EDITSERVERDLG_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 244
+        VERTGUIDE, 13
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 210
+    END
+
+    IDD_ADVANCE_SETTINGS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        VERTGUIDE, 49
+        VERTGUIDE, 57
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 71
+    END
+
+    IDD_EDIT_ADDRESS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 234
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 115
+    END
+
+    IDD_LAUNCH_PROGRESS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 158
+        TOPMARGIN, 7
+    END
+
+    IDD_PLUGINS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 262
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 168
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_EDITSERVERDLG_DIALOG DLGINIT
+BEGIN
+    IDC_CLIENT_EMULATION_COMBO, 0x403, 4, 0
+0x7361, 0x0064, 
+    IDC_CLIENT_EMULATION_COMBO, 0x403, 4, 0
+0x7361, 0x0064, 
+    IDC_CLIENT_EMULATION_COMBO, 0x403, 4, 0
+0x7361, 0x0064, 
+    IDC_CLIENT_EMULATION_COMBO, 0x403, 4, 0
+0x7361, 0x0064, 
+    IDC_CLIENT_EMULATION_COMBO, 0x403, 4, 0
+0x7361, 0x0064, 
+    IDC_CLIENT_EMULATION_COMBO, 0x403, 4, 0
+0x7361, 0x0064, 
+    IDC_CLIENT_EMULATION_COMBO, 0x403, 4, 0
+0x7361, 0x0064, 
+    IDC_CLIENT_EMULATION_COMBO, 0x403, 4, 0
+0x7361, 0x0064, 
+    IDC_CLIENT_EMULATION_COMBO, 0x403, 4, 0
+0x7361, 0x0064, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About UOInjection..."
+    IDS_VERSION             "0.1.0.0 beta"
+    IDS_LAUNCH              "&Launch"
+    IDS_NEW                 "&New"
+    IDS_EDIT                "&Edit"
+    IDS_DELETE              "&Delete"
+    IDS_ADVANCED            "Advanced"
+    IDS_EXIT                "Exit"
+    IDS_CHECK_FOR_UPDATES_NOW "Check for &Updates Now"
+    IDS_CLIENT_LABEL        "Client:"
+    IDS_ADDRESS_LABEL       "Address:"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_ALT_DATA_DIR_LABEL  "Alt Data Dir:"
+    IDS_LAUNCH_UOAM_LABEL   "Launch UOAM:"
+    IDS_USE_INJECTION_LABEL "Use Injection:"
+    IDS_CLIENT_EMULATION_LABEL "Client Emulation:"
+    IDS_VERSION_LABEL       "Version:"
+    IDS_CHECK_FOR_UPDATE_ON_RUN_LABEL "Check for updates on startup"
+    IDS_CLOSE               "Close"
+    IDS_OK                  "OK"
+    IDS_CANCEL              "Cancel"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\UOInjection.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
